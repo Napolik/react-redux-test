@@ -14,14 +14,15 @@ class Posts extends React.Component {
     .then(res => {
       let newData = res.data.slice(0,5);
       this.props.change_posts(newData);
-
+    let result = [];
       this.props.posts.forEach(element => { 
         for (const [key, value] of Object.entries(element)) {
             if(key === 'title') {
-                this.setState({ data : value});
+                result.push(value);
             };
-      }} );
-      
+      }}      
+      );
+      this.setState({ data : result});
       console.log(this.props.posts);
     })
     .catch(err => console.log("Couldn't fetch data. Error: " + err))
@@ -32,7 +33,16 @@ class Posts extends React.Component {
     return (
         
       <div className='ArticleContainer'>
-       
+         {
+          this.state.data.length === 0 ?
+            <p>Loading Posts...</p>
+          :
+            this.state.data.map((post, index) => (
+              <article key={index}>
+                <h2>{index + 1}. {post}</h2>
+              </article>
+            ))
+        }
       </div>
     )
   }
