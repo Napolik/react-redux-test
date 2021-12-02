@@ -14,6 +14,13 @@ function mapStateToProps(component) {
 				};
 			}
 		}
+		case "Component_posts": {
+			return function (state) {
+				return {
+					posts: state.posts
+				};
+			}
+		}
 		default: return undefined;
 	}
 }
