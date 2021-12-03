@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Component_posts from '../component_posts2';
+import Component_posts from '../component_posts';
 import mapStateToProps from '../../store/mapStateToProps';
 import mapDispatchToProps from '../../store/mapDispatchToProps';
 
